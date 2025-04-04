@@ -72,7 +72,7 @@ class Assets {
 	 * @return void
 	 */
 	public function hooks() {
-		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_editor_assets' ] );
+		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_editor_global_css' ] );
 		add_action( 'wp_enqueue_scripts',          [ $this, 'enqueue_frontend_global_css' ], 5 );
 		add_action( 'wp_enqueue_scripts',          [ $this, 'enqueue_frontend_global_js' ], 5 );
 		add_action( 'after_setup_theme',           [ $this, 'enqueue_blocks_css' ], 5 );
@@ -87,15 +87,15 @@ class Assets {
 	 *
 	 * @return void
 	 */
-	public function enqueue_editor_assets() {
-		$assets = include( plugin_dir_path( __DIR__ ) . 'build/block-settings.asset.php' );
+	public function enqueue_editor_global_css() {
+		// $assets = include( plugin_dir_path( __DIR__ ) . 'build/block-settings.asset.php' );
 
-		wp_enqueue_script(
-			'mai-block-settings',
-			plugin_dir_url( __DIR__ ) . 'build/block-settings.js',
-			$assets['dependencies'],
-			$assets['version'],
-		);
+		// wp_enqueue_script(
+		// 	'mai-block-settings',
+		// 	plugin_dir_url( __DIR__ ) . 'build/block-settings.js',
+		// 	$assets['dependencies'],
+		// 	$assets['version'],
+		// );
 
 		// Get the global styles.
 		$styles = $this->cache->remember( 'global_styles', [ $this, 'get_global_css_data' ], $this->expire );

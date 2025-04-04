@@ -32,9 +32,9 @@ require_once __DIR__ . '/vendor/autoload.php';
 // Include non-class files only.
 // require_once __DIR__ . '/inc/setup.php';
 // require_once __DIR__ . '/inc/assets.php';
-require_once __DIR__ . '/inc/block-settings.php';
 require_once __DIR__ . '/inc/theme-json.php';
 require_once __DIR__ . '/inc/updater.php';
+
 // Instantiate classes.
 Assets::get_instance();
 
