@@ -310,6 +310,11 @@ class Assets {
 
 		// Loop through all styles to build data array.
 		foreach ( $all_styles as $filename => $locations ) {
+			// Skip if no locations.
+			if ( ! $locations ) {
+				continue;
+			}
+
 			// If the theme path is readable.
 			if ( is_readable( $theme_dir . $filename . '.css' ) ) {
 				foreach ( $locations as $location ) {
