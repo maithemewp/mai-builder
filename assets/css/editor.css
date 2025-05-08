@@ -1,3 +1,16 @@
+/* Allow main content to grow, which forces footer to the bottom of the page */
+
+.wp-site-blocks,
+.is-root-container.wp-site-blocks {
+	display: flex;
+	flex-direction: column;
+	min-height: var(--wp-site-blocks-min-height, 100svh);
+
+	main {
+		flex-grow: 1;
+	}
+}
+
 /* Remove default margin from template parts. Similar less specific version in frontend.css. */
 
 :root :where(.wp-site-blocks) > .wp-block-template-part,

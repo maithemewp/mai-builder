@@ -92,6 +92,22 @@ return [
 		plugin_dir_path(__FILE__) . 'assets/icons',
 		get_template_directory() . '/mai/icons',
 	],
+	'template-part-areas' => [
+		'loop' => [
+			'area'        => 'loop',
+			'area_tag'    => 'section',
+			'label'       => __( 'Loop', 'mai-builder' ),
+			'description' => __( 'The loop template defines a page area that typically displays a list of posts.', 'mai-builder' ),
+			'icon'        => 'layout'
+		],
+		'sidebar' => [
+			'area'        => 'sidebar',
+			'area_tag'    => 'aside',
+			'label'       => __( 'Sidebar', 'mai-builder' ),
+			'description' => __( 'The sidebar template defines a page area for a sidebar.', 'mai-builder' ),
+			'icon'        => 'layout'
+		],
+	],
 	// TODO: Patterns.
 	'patterns' => [],
 ];

@@ -1,14 +1,15 @@
 <?php
 
 /**
- * Plugin Name:     Mai Builder
- * Plugin URI:      https://bizbudding.com
- * Description:     Core functionality for Mai Theme FSE.
- * Version:         0.2.0
- * Requires PHP:    8.0
+ * Plugin Name:       Mai Builder
+ * Plugin URI:        https://bizbudding.com
+ * Description:       Core functionality for Mai Theme FSE.
+ * Version:           0.3.0
+ * Requires PHP:      8.0
+ * Requires at least: 6.8
  *
- * Author:          JiveDig
- * Author URI:      https://bizbudding.com
+ * Author:            JiveDig
+ * Author URI:        https://bizbudding.com
  */
 
 namespace Mai\Builder;
@@ -33,13 +34,36 @@ require_once __DIR__ . '/vendor/autoload.php';
 // require_once __DIR__ . '/inc/setup.php';
 // require_once __DIR__ . '/inc/assets.php';
 require_once __DIR__ . '/inc/theme-json.php';
+require_once __DIR__ . '/inc/template-parts.php';
 require_once __DIR__ . '/inc/updater.php';
 
 // Instantiate classes.
 Assets::get_instance();
 
-// Load separate core block assets.
-add_filter( 'should_load_separate_core_block_assets', '__return_true', 8 );
+add_filter( 'should_load_separate_core_block_assets', __NAMESPACE__ . '\load_separate_core_block_assets', 8 );
+/**
+ * Load separate core block assets.
+ *
+ * @since 0.1.0
+ *
+ * @return bool
+ */
+function load_separate_core_block_assets() {
+	return true;
+}
+
+add_filter( 'should_load_block_assets_on_demand', __NAMESPACE__ . '\load_block_assets_on_demand', 8 );
+/**
+ * Load block assets on demand.
+ * Since WP 6.8.
+ *
+ * @since 0.2.0
+ *
+ * @return bool
+ */
+function load_block_assets_on_demand() {
+	return true;
+}
 
 add_action( 'init', __NAMESPACE__ . '\icon_block_init' );
 /**

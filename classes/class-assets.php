@@ -57,7 +57,7 @@ class Assets {
 	 *
 	 * @return Assets
 	 */
-	public static function get_instance() {
+	public static function get_instance(): Assets {
 		if ( null === self::$instance ) {
 			self::$instance = new self();
 		}
@@ -87,7 +87,7 @@ class Assets {
 	 *
 	 * @return void
 	 */
-	public function enqueue_editor_global_css() {
+	public function enqueue_editor_global_css(): void {
 		// $assets = include( plugin_dir_path( __DIR__ ) . 'build/block-settings.asset.php' );
 
 		// wp_enqueue_script(
@@ -119,7 +119,7 @@ class Assets {
 	 *
 	 * @return void
 	 */
-	public function enqueue_frontend_global_css() {
+	public function enqueue_frontend_global_css(): void {
 		// Get the global styles.
 		$styles = $this->cache->remember( 'global_styles', [ $this, 'get_global_css_data' ], $this->expire );
 
@@ -141,7 +141,7 @@ class Assets {
 	 *
 	 * @return void
 	 */
-	public function enqueue_frontend_global_js() {
+	public function enqueue_frontend_global_js(): void {
 		// Get the global scripts.
 		$data = $this->cache->remember( 'global_scripts', [ $this, 'get_global_scripts_data' ], DAY_IN_SECONDS );
 
@@ -158,7 +158,7 @@ class Assets {
 	 *
 	 * @return void
 	 */
-	public function enqueue_blocks_css() {
+	public function enqueue_blocks_css(): void {
 		// Get the block styles.
 		$data = $this->cache->remember( 'block_css', [ $this, 'get_block_css_data' ], $this->expire );
 
@@ -186,7 +186,7 @@ class Assets {
 	 *
 	 * @return void
 	 */
-	public function register_block_styles() {
+	public function register_block_styles(): void {
 		// Get the block styles.
 		$data = $this->cache->remember( 'block_styles', [ $this, 'get_block_styles_data' ], $this->expire );
 
@@ -231,7 +231,7 @@ class Assets {
 	 *
 	 * @return array
 	 */
-	public function register_block_variations( $variations, $block_type ) {
+	public function register_block_variations( $variations, $block_type ): array {
 		// Get the block styles.
 		static $data = null;
 
@@ -261,7 +261,7 @@ class Assets {
 	 *
 	 * @return array
 	 */
-	public function get_global_scripts_data() {
+	public function get_global_scripts_data(): array {
 		$theme_dir   = get_stylesheet_directory() . '/mai/js/';
 		$theme_uri   = get_stylesheet_directory_uri() . '/mai/js/';
 		$all_scripts = (array) Config::get( 'js' );
@@ -299,7 +299,7 @@ class Assets {
 	 *
 	 * @return string
 	 */
-	public function get_global_css_data() {
+	public function get_global_css_data(): array {
 		$theme_dir  = get_stylesheet_directory() . '/mai/css/';
 		$theme_uri  = get_stylesheet_directory_uri() . '/mai/css/';
 		$plugin_dir = plugin_dir_path(__DIR__) . 'assets/css/';
@@ -383,7 +383,7 @@ class Assets {
 	 *
 	 * @return array
 	 */
-	public function get_block_css_data() {
+	public function get_block_css_data(): array {
 		$block_styles = (array) Config::get( 'blocks.css' );
 		$data         = [];
 
@@ -439,7 +439,7 @@ class Assets {
 	 *
 	 * @return array
 	 */
-	public function get_block_styles_data() {
+	public function get_block_styles_data(): array {
 		$block_styles = (array) Config::get( 'blocks.styles' );
 		$data         = [];
 
@@ -501,7 +501,7 @@ class Assets {
 	 *
 	 * @return array
 	 */
-	public function get_block_variations_data() {
+	public function get_block_variations_data(): array {
 		$variations = (array) Config::get( 'blocks.variations' );
 		$data             = [];
 

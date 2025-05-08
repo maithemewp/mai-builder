@@ -1,14 +1,36 @@
 /**
- * Global CSS
+ * Elements
  */
 
+/* Add a default margin to headings and paragraphs */
+
+:where(h1, h2, h3, h4, h5, h6, p) {
+	margin-block: 0 var(--wp--preset--spacing--20);
+}
+
 /* Add a default transition */
-a,
-button,
-input,
-textarea,
-select {
+
+:where(a, button, input, textarea, select) {
 	transition: all 0.15s ease-in-out;
+}
+
+/**
+ * WP Classes
+ */
+
+@media (min-width: 768px) {
+
+	:where(.alignleft) {
+		float: left;
+		margin-right: var(--wp--preset--spacing--30);
+		margin-bottom: var(--wp--preset--spacing--30);
+	}
+
+	:where(.alignright) {
+		float: right;
+		margin-left: var(--wp--preset--spacing--30);
+		margin-bottom: var(--wp--preset--spacing--30);
+	}
 }
 
 /**
