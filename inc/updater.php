@@ -4,6 +4,8 @@ namespace Mai\Builder;
 
 use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
+defined( 'ABSPATH' ) || exit;
+
 add_action( 'plugins_loaded', __NAMESPACE__ . '\init' );
 /**
  * Initialize the updater.
